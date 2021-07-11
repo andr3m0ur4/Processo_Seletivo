@@ -8,6 +8,7 @@ No lado do cliente, eu me utilizei das tecnologias HTML5 em conjunto com o Frame
 
 - Para utilizar ambas as aplicações, é necessário primeiramente possuir instalado um servidor web, PHP 7 ou mais atual e um servidor de banco de dados MySQL.
 - Após realizar o clone do projeto, você precisa importar o banco de dados que se encontra na raiz da API.
+- Modificar o arquivo /API/config.php conforme o seu banco de dados para realizar o acesso corretamente.
 - Você pode inicializar as aplicações a partir da raiz de cada uma com a ajuda do composer, um gerenciador de pacotes do PHP.
 
 ```bash
