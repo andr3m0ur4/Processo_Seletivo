@@ -3,27 +3,28 @@
     namespace Models;
 
     use Core\Model;
-use DateTime;
-use DateTimeZone;
 
-class Product extends Model implements \JsonSerializable
+    class Product extends Model implements \JsonSerializable
     {
+        // propriedades
         private $id;
         private $name;
         private $price;
         private $last_price_update_date;
 
+        // método construtor
         public function __construct()
         {
             
         }
 
+        // métodos getters e setters
         public function __get($name)
         {
             if ($name == 'price') return doubleval($this->$name);
 
             if ($name == 'last_price_update_date') {
-                $date = new DateTime($this->$name, new DateTimeZone('America/Sao_Paulo'));
+                $date = new \DateTime($this->$name, new \DateTimeZone('America/Sao_Paulo'));
 
                 return $date->format('d/m/Y');
             }
@@ -38,9 +39,10 @@ class Product extends Model implements \JsonSerializable
 
         public function __toString()
         {
-            echo "ID: {$this->id}, Name: {$this->name}, Price: {$this->price}, Data Última Alteração de Preço: {$this->last_price_update_date}";
+            echo "ID: {$this->id}, Name: {$this->name}, Price: {$this->price}, Last Price Update Date: {$this->last_price_update_date}";
         }
 
+        // método da interface JsonSerialize, responsável por obter os dados do objeto na conversão em JSON
         public function jsonSerialize()
         {
             $vars = [];

@@ -14,6 +14,7 @@
             $this->secret = $config['jwt_secret_key'];
         }
 
+        // método responsável por criar o token de acesso da API
         public function create($data)
         {
             $header = json_encode([
@@ -39,6 +40,7 @@
             return $jwt;
         }
 
+        // método responsável por validar o token de acesso retornando a palavra chave ou false
         public function validate($token)
         {
             $array = [];

@@ -16,8 +16,10 @@
             $url = implode('/', $url);
             $params = [];
 
+            // verificar rotas existentes
             $url = $this->checkRoutes($url);
 
+            // construir o controller e método a partir da rota acessada
             if (!empty($url) && $url != '/') {
                 $url = explode('/', $url);
                 array_shift($url);
@@ -73,6 +75,7 @@
             call_user_func_array([$controller, $currentAction], $params);
         }
 
+        // método responsável por retornar a URL esperada pela aplicação
         private function checkRoutes($url)
         {
             global $routes;

@@ -15,8 +15,11 @@
                 'products' => []
             ];
 
+            // obter o verbo da requisição
             $method = $this->getMethod();
+            // obter os dados da requisição
             $data = $this->getRequestData();
+            // obter o token de autenticação
             $token = $_SERVER['HTTP_JWT'] ?? null;
             $jwt = new JWT();
             
@@ -26,8 +29,15 @@
     
                     if ($query) {
                         $dao = new ProductDAO();
-                        $response['products'] = $dao->search($query);
+
+                        try {
+                            $response['products'] = $dao->search($query);
+                        } catch (\Exception $err) {
+                            $response['error'] = $err->getMessage();
+                        }
                     }
+                } else {
+                    $response['error'] = 'Método inválido, você precisa usar GET';
                 }
             } else {
                 $response['error'] = 'Invalid Secred Key';

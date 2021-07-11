@@ -17,6 +17,7 @@
             return $this->returnJson($data);
         }
 
+        // método responsáel por devolver uma resposta com o token de autenticação
         public function getJWT()
         {
             $jwt = new JWT();

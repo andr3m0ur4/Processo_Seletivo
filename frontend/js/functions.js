@@ -1,3 +1,4 @@
+// classe para criar um elemento
 class Element {
     constructor(name, className) {
         this.element = $(`<${name}>`)
@@ -13,6 +14,7 @@ class Element {
     }
 }
 
+// classe para armazenar o JWT
 class JWT {
     constructor() {
         $.get('http://localhost:8080/jwt/get')
@@ -26,6 +28,7 @@ class JWT {
 
 let jwt = new JWT()
 
+// formatar currency
 const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -46,6 +49,7 @@ $(() => {
 
 })
 
+// requisição ajax com o valor digitado pelo usuário
 const searchProduct = query => {
     const data = { q: query }
 
@@ -66,6 +70,7 @@ const searchProduct = query => {
     })
 }
 
+// preencher a view com os dados da consulta
 const fillResults = products => {
     products.forEach(product => {
         const card = new Element('div', 'card mt-2')
@@ -95,6 +100,7 @@ const fillResults = products => {
     })
 }
 
+// exbir mensagem que não há resultados
 const notResults = () => {
     const card = new Element('div', 'card mt-2')
     const body = new Element('div', 'card-body')

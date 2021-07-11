@@ -13,6 +13,7 @@
 
         public function getRequestData()
         {
+            // obter cada um dos verbos principais do HTTP
             switch ($this->getMethod()) {
                 case 'GET':
                     return $_GET;
@@ -36,6 +37,7 @@
 
         public function returnJson($array)
         {
+            // conversão em json
             header('Content-Type: application/json');
             echo json_encode($array);
             exit;
