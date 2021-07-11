@@ -26,4 +26,12 @@
 
             $this->returnJson($data);
         }
+
+        public function getJWT()
+        {
+            $jwt = new JWT();
+            $response['jwt'] = $jwt->create('pr0duct!!!');
+
+            $this->returnJson($response);
+        }
     }

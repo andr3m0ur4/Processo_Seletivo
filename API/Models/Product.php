@@ -3,8 +3,10 @@
     namespace Models;
 
     use Core\Model;
+use DateTime;
+use DateTimeZone;
 
-    class Product extends Model implements \JsonSerializable
+class Product extends Model implements \JsonSerializable
     {
         private $id;
         private $name;
@@ -18,9 +20,15 @@
 
         public function __get($name)
         {
-            if ($this->$name) {
-                return $this->$name;
+            if ($name == 'price') return doubleval($this->$name);
+
+            if ($name == 'last_price_update_date') {
+                $date = new DateTime($this->$name, new DateTimeZone('America/Sao_Paulo'));
+
+                return $date->format('d/m/Y');
             }
+
+            return $this->$name;
         }
 
         public function __set($name, $value)
@@ -38,7 +46,9 @@
             $vars = [];
 
             foreach (get_object_vars($this) as $key => $value) {
-                if ($value) $vars[$key] = $value;
+                if ($value) {
+                    $vars[$key] = $this->__get($key);
+                }
             }
 
             return $vars;
