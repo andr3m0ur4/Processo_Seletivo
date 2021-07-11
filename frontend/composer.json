@@ -1,0 +1,19 @@
+{
+    "name": "front-end/front-end",
+    "description": "Um Front-End para consumir a API",
+    "keywords": ["HTML5", "CSS3", "JavaScript", "jQuery", "Front-End"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "André Moura",
+            "email": "andre.benedicto@etec.sp.gov.br",
+            "homepage": "https://www.hg-study.gq/"
+        }
+    ],
+    "scripts": {
+        "start": "php -S localhost:5500"
+    },
+    "config": {
+        "process-timeout": 0
+    }
+}
